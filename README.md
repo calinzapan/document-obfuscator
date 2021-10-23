@@ -16,6 +16,16 @@ Document Obfuscator is a project developed as a part of the [Advanced Software E
 
 **Contact information:** calin.zapan@gmail.com, cobuzcezar@gmail.com, alexandrugean.luca@gmail.com
 
-## State of the art
+## Documentation
 
-[📖 Document link](https://docs.google.com/document/d/1lzFYpHr9nZhxq4BpfmtOMLNQP-omLHmoRBRon-LCZoI/edit?usp=sharing)
+[📖 Document Obfuscator documentation](https://docs.google.com/document/d/1lzFYpHr9nZhxq4BpfmtOMLNQP-omLHmoRBRon-LCZoI/edit?usp=sharing) covers state of art, solution description.
+
+## Modules
+
+Each module has its own repository
+
+[📱 Mobile App](https://github.com/CezarCobuz/document-obfuscator-app)
+
+Orchestrator Server
+
+TODO: Add all components here + links
