@@ -15,4 +15,4 @@ Document Obfuscator is a project developed as a part of the [Advanced Software E
 
 # State of the art
 
-[Document link](https://docs.google.com/document/d/1lzFYpHr9nZhxq4BpfmtOMLNQP-omLHmoRBRon-LCZoI/edit?usp=sharing)
+[📖 Document link](https://docs.google.com/document/d/1lzFYpHr9nZhxq4BpfmtOMLNQP-omLHmoRBRon-LCZoI/edit?usp=sharing)
