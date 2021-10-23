@@ -1,4 +1,3 @@
-![fii logo](https://www.info.uaic.ro/wp-content/uploads/2019/05/cropped-engl-100x600v2.png")
 ![uaic logo](https://www.uaic.ro/wp-content/uploads/2013/12/logouaic.png)
 
 # Document Obfuscator
