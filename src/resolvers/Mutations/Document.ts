@@ -14,5 +14,12 @@ export const document = extendType({
         return ctx.prisma.document.create({ data })
       },
     })
+    t.field('deleteDocument', {
+      type: 'Document',
+      args: { documentId: nonNull(intArg()) },
+      resolve(_parent, args, ctx) {
+        return ctx.prisma.document.delete({ where: { id: args.documentId } })
+      },
+    })
   },
 })
