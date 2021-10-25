@@ -14,5 +14,29 @@ export const document = extendType({
         return ctx.prisma.document.create({ data })
       },
     })
+    t.field('deleteDocument', {
+      type: 'Document',
+      args: { documentId: nonNull(intArg()) },
+      resolve(_parent, args, ctx) {
+        return ctx.prisma.document.delete({ where: { id: args.documentId } })
+      },
+    })
+    t.field('updateDocument', {
+      type: 'Document',
+      args: {
+        documentId: nonNull(intArg()),
+        documentUrl: nonNull(stringArg()),
+      },
+      resolve(_parent, args, ctx) {
+        return ctx.prisma.document.update({
+          data: {
+            pictureUrl: args.documentUrl,
+          },
+          where: {
+            id: args.documentId,
+          },
+        })
+      },
+    })
   },
 })
