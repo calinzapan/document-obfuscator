@@ -16,6 +16,24 @@ Document Obfuscator is a project developed as a part of the [Advanced Software E
 
 **Contact information:** calin.zapan@gmail.com, cobuzcezar@gmail.com, alexandrugean.luca@gmail.com
 
+## Lab 4 - 25.10.2021
+
+### Design Patterns
+
+**PubSub** - For realtime features (sharing documents, chats, notifications)
+
+**Decorator** - Enhancing the behavior of a function without modifying the function itself - verify permissions, perform caching
+
+**Observer** - For Detecting changes of state
+
+**Bridge** - Implemented a middleware to handle the encryption/decryption of data before and after the next component in the pipeline is invoked.
+
+**Prototype** - Provides a mechanism to copy the original object to a new object and then modify it according to our needs, used for creating Queries, Mutations, etc.
+
+**Composite** - Creating a whole component called context that has access to multiple features, unifying them: pubsub mechanism, authorization mechanism, Prisma ORM etc.
+
+**ORM** - Used Prisma ORM for the database communication
+
 ## Documentation
 
 [📖 Document Obfuscator documentation](https://docs.google.com/document/d/1lzFYpHr9nZhxq4BpfmtOMLNQP-omLHmoRBRon-LCZoI/edit?usp=sharing) covers state of art, solution description.
@@ -27,8 +45,6 @@ Each module has its own repository
 [📱 Mobile App](https://github.com/CezarCobuz/document-obfuscator-app)
 
 ## Orchestrator Server
-
-
 
 ### 1. Clone this repo & install dependencies
 
@@ -48,6 +64,7 @@ To set up your database, run:
 yarn db:save
 yarn db:migrate
 ```
+
 ### 3. Generate Prisma Client (type-safe database client)
 
 Run the following command to generate [Prisma Client](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/generating-prisma-client):
