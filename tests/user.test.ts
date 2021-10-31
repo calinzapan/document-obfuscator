@@ -7,6 +7,7 @@ const config = getConfig()
 test('successfully create a user', async () => {
   try {
     const user = {
+      firstName: 'Doe',
       name: 'user 1',
       email: 'u1@g.com',
       password: 'user 1',

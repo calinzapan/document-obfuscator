@@ -1,6 +1,16 @@
 export const createUser = /* GraphQL */ `
-  mutation createUser($name: String, $email: String!, $password: String!) {
-    signup(name: $name, email: $email, password: $password) {
+  mutation createUser(
+    $name: String
+    $firstName: String
+    $email: String!
+    $password: String!
+  ) {
+    signup(
+      name: $name
+      firstName: $firstName
+      email: $email
+      password: $password
+    ) {
       ... on UserAlreadyExists {
         message
       }
@@ -28,20 +38,27 @@ export const login = /* GraphQL */ `
   }
 `
 
-export const createDraft = /* GraphQL */ `
-  mutation createDraft($title: String!, $content: String!) {
-    createDraft(title: $title, content: $content) {
-      title
-      published
+export const createDocument = /* GraphQL */ `
+  mutation createDocument($pictureUrl: String!) {
+    createDocument(pictureUrl: $pictureUrl) {
+      id
+      pictureUrl
     }
   }
 `
 
-export const deletePost = /* GraphQL */ `
-  mutation deletePost($id: Int!) {
-    deletePost(id: $id) {
+export const deleteDocument = /* GraphQL */ `
+  mutation deleteDocument($id: Int!) {
+    deleteDocument(documentId: $id) {
       id
-      title
+    }
+  }
+`
+
+export const updateDocument = /* GraphQL */ `
+  mutation updateDocument($documentId: Int!, $documentUrl: String!) {
+    updateDocument(documentId: $documentId, documentUrl: $documentUrl) {
+      pictureUrl
     }
   }
 `
