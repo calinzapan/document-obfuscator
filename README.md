@@ -4,6 +4,8 @@
 
 # Document Obfuscator
 
+**Diagrams:** [Document obfuscator class & usecase diagrams](https://app.diagrams.net/#G1ZvE9eP7MMW0dSso3u6s9COywi1e0YyxO)
+
 Document Obfuscator is a project developed as a part of the [Advanced Software Engineering Techniques](https://profs.info.uaic.ro/~adiftene/Scoala/2022/ASET/index.html) course (2021-2022) at [Faculty of Computer Science Iasi](https://www.info.uaic.ro/en/home-page-2/), ["Alexandru Ioan Cuza" University Iasi](https://www.uaic.ro/en/).
 
 **Course:** Advanced Software Engineering Techniques
