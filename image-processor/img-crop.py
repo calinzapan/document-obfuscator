@@ -1,36 +1,32 @@
 # # -*- coding: utf-8 -*-
 
-from PIL import Image
+from PIL import Image, ImageDraw
 import PIL, sys
 
 # print sys.version, PIL.VERSION
 
-im = Image.open("demo.jpg")
+img = Image.open("demo.jpg")
+draw = ImageDraw.Draw(img)
 xCI = 58
 yCI = 140
-photo = im.crop((xCI + 8, yCI + 73, xCI + 231, yCI + 398))
-photo.save("photo.jpg")
-cnp = im.crop((xCI + 273, yCI + 112, xCI + 451, yCI + 135))
-cnp.save("cnp.jpg")
-lastName = im.crop((xCI + 238, yCI + 154, xCI + 458, yCI + 172))
-lastName.save("lastName.jpg")
-firstName = im.crop((xCI + 238, yCI + 194, xCI + 650, yCI + 212))
-firstName.save("firstName.jpg")
-nationality = im.crop((xCI + 238, yCI + 234, xCI + 362, yCI + 252))
-nationality.save("nationality.jpg")
-placeOfBirth = im.crop((xCI + 238, yCI + 274, xCI +  568, yCI + 292))
-placeOfBirth.save("placeOfBirth.jpg")
-address = im.crop((xCI + 238, yCI + 308, xCI + 733, yCI + 353))
-address.save("address.jpg")
-issuedBy = im.crop((xCI + 238, yCI + 376, xCI + 479, yCI + 400))
-issuedBy.save("issuedBy.jpg")
-valability = im.crop((xCI + 556, yCI + 365, xCI +  778, yCI + 402))
-valability.save("valability.jpg")
-barCode = im.crop((xCI + 27, yCI + 411, xCI + 760, yCI + 498))
-barCode.save("barCode.jpg")
+def crop(x1: int, y1: int, x2: int, y2: int, fileName: str):
+    crp = img.crop((xCI + x1, yCI + y1, xCI + x2, yCI + y2))
+    crp.save(fileName)
+    draw.line((xCI + x1, (yCI * 2 + y1 + y2) / 2, xCI + x2, (yCI * 2 + y1 + y2) / 2), 0, y2 - y1)
 
-
-
+crop(8, 73, 231, 398, "photo.jpg")
+crop(456, 95, 488, 111, "serial.jpg")
+crop(524, 95, 661, 111, "number.jpg")
+crop(273, 112, 451, 135, "cnp.jpg")
+crop(238, 150, 458, 172, "lastName.jpg")
+crop(238, 190, 650, 212, "firstName.jpg")
+crop(238, 230, 362, 252, "nationality.jpg")
+crop(238, 270, 568, 292, "placeOfBirth.jpg")
+crop(238, 308, 733, 353, "address.jpg")
+crop(238, 376, 479, 400, "issuedBy.jpg")
+crop(556, 375, 778, 402, "valability.jpg")
+crop(27, 411, 760, 498, "barCode.jpg")
+img.save("test.jpg")
 
 # # importing the module
 # import sys
