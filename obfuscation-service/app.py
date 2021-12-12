@@ -6,6 +6,8 @@ import base64
 import random, sys
 app = Flask(__name__)
 
+
+
 def isBase64(function):
   def wrapper(arg1):
     try:
@@ -28,9 +30,6 @@ def encode(function):
     arrays = function(arg1)
     buff = io.BytesIO()
     IMAGE_ENCRYPTED = Image.fromarray(arrays[0].astype("uint8"))
-    buff.seek(0)
-    IMAGE_ENCRYPTED.save(buff, format="PNG")
-    B64_IMAGE_ENCRYPTED = base64.b64encode(buff.getvalue()).decode("utf-8")
 
     buff.flush()
     IMAGE_KEY = Image.fromarray(arrays[1])
@@ -39,13 +38,12 @@ def encode(function):
     B64_IMAGE_KEY = base64.b64encode(buff.getvalue()).decode("utf-8")
 
     return {
-      'pictureUrl': B64_IMAGE_ENCRYPTED,
+      'pictureUrl': IMAGE_ENCRYPTED,
       'key': B64_IMAGE_KEY
     }
   return wrapper
 
 @encode
-@isBase64
 def obfuscateImage(image):
   img_arr = np.array(Image.open(io.BytesIO(image)))
   img_rows = img_arr.shape[0]
@@ -69,7 +67,16 @@ def index():
 def obfuscate():
   json_data = request.get_json(force=True)
   pictureUrl = json_data['pictureUrl']
-  return obfuscateImage(pictureUrl)
+  if isinstance(pictureUrl, str):
+    sb_bytes = bytes(pictureUrl, 'ascii')
+  elif isinstance(pictureUrl, bytes):
+    sb_bytes = pictureUrl
+  
+  decoded_image = base64.b64decode(sb_bytes)
+  # go through dictionary of coordinates here and call obfuscateImage for every zone
+  # paste the the encrypted zone back to the original photo
+  # save the key in a object, associated with the label
+  return obfuscateImage(decoded_image)
   
 @app.route('/deobfuscate', methods=['POST'])
 def deobfuscate():
