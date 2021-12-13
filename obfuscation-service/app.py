@@ -58,7 +58,7 @@ def encode(function):
 
 @encode
 def obfuscateImage(image):
-  img_arr = np.array(Image.open(io.BytesIO(image)))
+  img_arr = np.array(image)
   img_rows = img_arr.shape[0]
   img_cols = img_arr.shape[1]
   IMAGE_KEY = Image.new("RGB", (img_cols, img_rows), "white")
@@ -86,7 +86,7 @@ def obfuscate():
     sb_bytes = pictureUrl
   
   decoded_image = base64.b64decode(sb_bytes)
-  img = Image.open(decoded_image).convert('RGB')
+  img = Image.open(io.BytesIO(decoded_image))
   # left corner of the photo
   xCI = 0
   yCI = 0
@@ -94,13 +94,20 @@ def obfuscate():
   for key, value in labels.items():
     crpImg = img.crop((xCI + value[0], yCI + value[1], xCI + value[2], yCI + value[3]))
     obfuscateResult = obfuscateImage(crpImg)
-    img.paste(obfuscateResult[0], (xCI + value[0], yCI + value[1]))
-    labelKeys[key] = obfuscateResult[1]
+    img.paste(obfuscateResult['pictureUrl'] , (xCI + value[0], yCI + value[1]))
+    labelKeys[key] = obfuscateResult['key']
 
+  img.show()
+  buff = io.BytesIO()
+  img.save(buff, format="PNG")
+  img_encoded = base64.b64encode(buff.getvalue()).decode("utf-8")
   # go through dictionary of coordinates here and call obfuscateImage for every zone
   # paste the the encrypted zone back to the original photo
   # save the key in a object, associated with the label
-  return [labelKeys, img]
+  return {
+    'obfuscatedImage': img_encoded,
+    'labelKeys': labelKeys
+  }
   
 @app.route('/deobfuscate', methods=['POST'])
 def deobfuscate():
